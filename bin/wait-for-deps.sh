@@ -29,15 +29,15 @@ with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as sock:
 EOF
 }
 
+until elasticsearch_ready; do
+  >&2 echo "elasticsearch is unavailable - sleeping"
+  sleep 1
+done
+
 until postgres_ready; do
   >&2 echo 'Waiting for PostgreSQL to become available...'
   sleep 1
 done
 >&2 echo 'PostgreSQL is available'
-
-until elasticsearch_ready; do
-  >&2 echo "elasticsearch is unavailable - sleeping"
-  sleep 1
-done
 
 exec "$@"
