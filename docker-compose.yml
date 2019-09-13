@@ -27,6 +27,7 @@ services:
   db:
     build:
       context: docker/db
+      dockerfile: Dockerfile
     image: postgres-9.6-postgis-2.3
     environment:
       - POSTGRES_USER=pombola

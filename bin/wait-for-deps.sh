@@ -33,6 +33,7 @@ until elasticsearch_ready; do
   >&2 echo "elasticsearch is unavailable - sleeping"
   sleep 1
 done
+>&2 echo 'Elasticsearch is available'
 
 until postgres_ready; do
   >&2 echo 'Waiting for PostgreSQL to become available...'
